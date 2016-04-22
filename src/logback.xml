@@ -1,0 +1,49 @@
+<!-- 
+Please note that this debug attribute relates only to the status data. It does not affect logback's configuration otherwise, in particular with respect to logger levels. (If you are asking, no, the root logger will not be set to DEBUG.)
+[ http://logback.qos.ch/manual/configuration.html ]
+-->
+<configuration debug="true">
+  <property name="CONTEXT_NAME" value="galaxii" />
+
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${CATALINA_HOME}/logs/${CONTEXT_NAME}.log</file>
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${CATALINA_HOME}/logs/${CONTEXT_NAME}.%d{yyyy/MM}.gz</fileNamePattern>
+      <maxHistory>12</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="BATCH_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${CATALINA_HOME}/logs/${CONTEXT_NAME}-batch.log</file>
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${CATALINA_HOME}/logs/${CONTEXT_NAME}-batch.%d{yyyy/MM}.gz</fileNamePattern>
+      <maxHistory>12</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!--
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  -->
+<!--
+  <logger name="org.hibernate" level="DEBUG" >
+    <appender-ref ref="FILE" />
+  </logger>
+-->
+  <root level="INFO">
+    <appender-ref ref="FILE" />
+  </root>
+
+  <logger name="com.galaxii.batch" additivity="false" level="INFO" >
+    <appender-ref ref="BATCH_FILE" />
+  </logger>
+</configuration>

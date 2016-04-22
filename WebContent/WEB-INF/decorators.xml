@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/content">
+	<excludes>
+		<pattern>/assets/*</pattern>
+		<pattern>/*-ajax*</pattern>
+		<pattern>/*-json*</pattern>
+		<pattern>/batch/*</pattern>
+	</excludes>
+    <decorator name="admin-basic-theme" page="admin/decorators/default.ftl">
+        <pattern>/admin/*</pattern>
+    </decorator>
+    <decorator name="default-basic-theme" page="front/decorators/default.ftl">
+        <pattern>/*</pattern>
+    </decorator>
+    <decorator name="default-pjax-basic-theme" page="front/decorators/pjax-default.ftl">
+    </decorator>
+</decorators>

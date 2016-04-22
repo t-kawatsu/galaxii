@@ -1,0 +1,185 @@
+@charset "utf-8";
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+	display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/* -- end of html5reset -------------------------- */
+
+
+
+*{margin:0px; padding:0px;}
+html,body{width:100%; height:100%; }
+body {
+	width:100%;
+	font-size:14px;
+	font-family:"ヒラギノ角ゴ Pro W3";
+	/*color:#5a5a5a;*/
+	color:#333;
+}
+a { 
+  text-decoration:none; color:#4169E1;
+  -webkit-transition: color .1s linear 0;
+  -moz-transition: color .1s linear;
+  -o-transition: color .1s linear 0;
+  -ms-transition: color .1s linear 0;
+}
+a:hover { 
+  text-decoration:underline; color:rgb(116, 151, 255);
+}
+a:visited { /*color: #555555;*/ }
+img,a { border:0px none; vertical-align:bottom; }
+textarea {/*resize:none;*/}
+fieldset{ border:none; }
+ul, ol{ list-style-type:none; }
+strong,h1,h2,h3{  font-style:normal; font-variant:normal; font-weight:normal; }
+
+.clearfix:after {
+  content: "";  /* "."だとfancyboxで高さが正常に取得できない　 */
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+.clearfix {
+  min-height: 1px;
+}
+* html .clearfix {
+  height: 1px;
+  /*\*//*/
+  height: auto;
+  overflow: hidden;
+  /**/
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  padding-right:5px;
+}
+
+*:focus {
+  /*outline:1px solid #4169E1;*/
+}
+
+input {
+  outline:0px;
+}
+
+select {
+  outline:0px;
+}
+
+textarea {
+	display:block;
+}
+
+.table {
+  display:table;
+  width:100%;
+}
+.table-row { display:table-row; }
+.table-cell { display:table-cell; }
+
+@-moz-document url-prefix(http), url-prefix(https), url-prefix(file) {
+  img:-moz-broken {
+    -moz-force-broken-image-icon: 1;
+    width: 24px;
+    height: 24px;
+  }
+}

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util" 
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/cache 
+       http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+	<!-- <import resource="daos.xml"/> -->
+
+	<!-- define data access resources -->
+	<!--
+		 TODO LocalContainerEntityManagerFactoryBean
+			load-time weaving
+	-->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	  <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+      <property name="url" value="jdbc:mysql://localhost:3306/galaxii"/>
+      <property name="username" value="galaxii"/>
+      <property name="password" value="jogojgalaxii"/>
+	</bean>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	  <property name="dataSource" ref="dataSource"/>
+	  <property name="entityInterceptor">
+        <ref bean="hibernatePersistDateInterceptor"/>
+      </property>
+	  <property name="packagesToScan" value="com.galaxii.common.entity"/>
+      <property name="hibernateProperties">
+        <value>
+		  hibernate.dialect=com.galaxii.common.hibernate.dialect.MySQLDialect
+		  hibernate.id.new_generator_mappings=true
+		  hibernate.c3p0.max_size=20
+		  hibernate.c3p0.min_size=5
+		  hibernate.c3p0.timeout=1800
+		  hibernate.c3p0.preferredTestQuery=/* ping */ SELECT 1
+		<!-- 
+		  http://stackoverflow.com/questions/4138663/spring-hibernate-and-declarative-transaction-implementation-there-is-no-active
+		  hibernate.current_session_context_class=thread
+		 -->
+		
+		<!--  
+		  hibernate.cache.provider_class=org.hibernate.cache.internal.NoCacheProvider
+		   -->
+		  hibernate.cache.provider_class=org.hibernate.testing.cache.CachingRegionFactory
+		  hibernate.show_sql=false
+		  hibernate.query.substitutions=true 1, false 0
+        </value>
+      </property>
+	</bean>
+
+	<bean id="transactionManager"
+            class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	  <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<!-- hibernate Interceptors -->
+	<bean id="hibernatePersistDateInterceptor" 
+		class="com.galaxii.common.hibernate.interceptor.PersistDateInterceptor"/>
+	
+	<!-- post-processors for all standard config annotations -->
+	<!-- <context:annotation-config/> -->
+	<!-- <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/> -->
+	<context:component-scan base-package="com.galaxii" />
+	
+	<util:properties id="appProperties" location="classpath:global.properties"/>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- <aop:config proxy-target-class="true" /> -->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+
+	<!-- daos -->
+
+	<!-- services -->
+
+	<!-- actions -->
+	<!-- 
+		Auto-wire by matching the name of the bean in Spring with the name of the property in your action.
+		by struts2-spring-plugin.jar
+	 -->
+
+	<!-- else -->
+	<bean id="simpleMailSender" class="com.galaxii.common.util.SimpleMailSender" scope="prototype">
+		<property name="host" value="mail.jogoj.com"/>
+		<property name="port" value="25"/>
+		<property name="user" value="t-kawatsu@jogoj.com"/>
+		<property name="password" value="tqjr4q"/>
+		<property name="fromDomain" value="galaxii.in"/>
+	</bean>
+	
+	<!-- cache -->
+	<cache:annotation-driven cache-manager="cacheManager"/>
+	
+	<bean name="cacheManager" class="com.google.code.ssm.spring.ExtendedSSMCacheManager">
+		<property name="caches">
+		  <set>
+             <bean class="com.google.code.ssm.spring.SSMCache">
+                 <constructor-arg name="cache" index="0" ref="settingMemcachedClient"/>
+                 <constructor-arg name="expiration" index="1" value="0"/>
+                 <constructor-arg name="allowClear" index="2" value="true"/>
+             </bean>
+             <bean class="com.google.code.ssm.spring.SSMCache">
+                 <constructor-arg name="cache" index="0" ref="communityMemcachedClient"/>
+                 <constructor-arg name="expiration" index="1" value="0"/>
+                 <constructor-arg name="allowClear" index="2" value="true"/>
+             </bean>
+		  </set>
+		</property>
+	</bean>
+	
+	<bean name="settingMemcachedClient" class="com.google.code.ssm.CacheFactory">
+		<property name="cacheName" value="setting"/>
+		<property name="cacheClientFactory">
+			<bean name="cacheClientFactory" class="com.google.code.ssm.providers.xmemcached.MemcacheClientFactoryImpl"/>
+		</property>
+		<property name="addressProvider">
+			<bean class="com.google.code.ssm.config.DefaultAddressProvider">
+				<property name="address" value="127.0.0.1:11211"/>
+			</bean>
+		</property>
+		<property name="configuration">
+			<bean class="com.google.code.ssm.providers.CacheConfiguration">
+				<property name="consistentHashing" value="true"/>
+			</bean>
+		</property>
+	</bean>
+ 
+	<bean name="communityMemcachedClient" class="com.google.code.ssm.CacheFactory">
+		<property name="cacheName" value="community"/>
+		<property name="cacheClientFactory">
+			<bean name="cacheClientFactory" class="com.google.code.ssm.providers.xmemcached.MemcacheClientFactoryImpl"/>
+		</property>
+		<property name="addressProvider">
+			<bean class="com.google.code.ssm.config.DefaultAddressProvider">
+				<property name="address" value="127.0.0.1:11211"/>
+			</bean>
+		</property>
+		<property name="configuration">
+			<bean class="com.google.code.ssm.providers.CacheConfiguration">
+				<property name="consistentHashing" value="true"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- 
+	<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+    	<property name="caches">
+    		<set>
+        		<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
+        			<property name="name" value="setting" />
+        		</bean>
+        		<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
+        			<property name="name" value="community" />
+        		</bean>        		
+    		</set>
+    	</property>
+	</bean>
+	 -->
+	
+	<!-- 
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+		<property name="cacheManager" ref="ehcache" />
+	</bean>
+	<bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:ehcache.xml" />
+	</bean>
+	 -->
+</beans>

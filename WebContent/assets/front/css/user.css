@@ -1,0 +1,224 @@
+@charset "utf-8";
+
+/**************************************** 
+  create **/
+
+.u-create-left {
+  float:left;
+  width:450px;
+}
+
+.u-create-right {
+  float:left;
+  width:400px;
+  margin-left:24px;
+  padding:0px 24px;
+  position:relative;
+}
+
+.u-create-sep {
+  position:absolute;
+  left:-24px;
+  top:50%;
+  padding:3px;
+  background-color:#F9F9F9;
+}
+
+.u-create-form .form-text,
+.u-create-form .form-password
+{
+  width:260px;
+}
+
+.u-create-form .item-agree dd
+{
+  padding-top:7px;
+}
+
+.u-create-promotion
+{
+  float:left;
+}
+
+.u-create-tmp-user-complete-description {
+	padding-top:16px;
+}
+
+#user-create p,
+#user-create-confirm p,
+#user-create-complete p,
+#user_create-complete-direct p
+{
+  line-height:35px;
+}
+
+
+/** endof create
+*****************************************/
+
+/**************************************** 
+  mypage **/
+
+.u-img-con {
+  position:relative;
+  width:100%;
+}
+
+.u-bgimg {
+  background-color: #fff;
+  padding: 7px; 
+}
+.u-bgimg img {
+  width:700px;
+  height:180px;
+}
+.u-bgimg-noimage {
+  width:696px;
+  height:176px;
+  border:2px dotted #bbb;
+}
+
+.u-img {
+  position:absolute;
+  top:39px;
+  right:29px;
+  background-color: #fff;
+  padding: 7px; 
+  box-shadow:0px 1px 3px 1px rgba(0,0,0,0.3);
+  width:180px;
+  height:180px;
+}
+
+.u-img .cc-remove-image-con {
+  position:absolute;
+  bottom:9px;
+  cursor:pointer;
+  text-align:center;
+  width:100%;
+  opacity:.8;
+}
+
+.u-img img {
+  width:180px;
+  height:180px;
+}
+
+.u-menu {
+  padding-top:8px;
+  padding-bottom:17px;
+}
+
+.u-message {
+  background-color: #fff;
+  border: 1px solid #D7D7D7;
+
+  margin-top:7px;
+  width:475px;
+  position:relative;
+}
+
+.u-message:before {
+  content: ''; 
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-left-color: #D7D7D7;
+  right: -20px;
+  top: 2px;
+}
+
+.u-message p { 
+  line-height: 22px;
+  margin: 3px 3px;
+  resize: none;
+  font-size: 14px;
+  padding: 1px;
+  width: 304px;
+  display: block;
+}
+
+.u-nickname {
+  position: absolute;
+  right: 28px;
+  top: 243px;
+  width: 194px;
+  font-size: 16px;
+}
+
+.u-detail-left {
+  width: 420px;
+  margin-right: 10px;
+  float:left;
+}
+
+.u-detail-right {
+  width: 284px;
+  float:left;
+}
+
+.u-mypage-menu {
+  padding-bottom: 11px;
+  padding-left: 4px;
+}
+
+
+/** endof mypage 
+*****************************************/
+
+/**************************************** 
+  setting **/
+  
+.u-img-dest-con {
+	position:relative;
+}
+
+.u-img-update-menu {
+	position:absolute;
+	bottom:18px;
+	left:12px;
+}
+
+.u-img-create-ctrl {
+	position:absolute;
+	width:100%;
+	bottom:32px;
+}
+
+.u-detail-item {
+  padding-bottom:16px;
+}
+
+.u-detail-item dt {
+  padding-bottom:8px;
+}
+
+.u-detail-item .cc-input {
+  font-size:13px;
+  padding:3px;
+}
+
+.u-update-form #userForm_nickname,
+.u-update-form #userForm_message,
+.u-update-form #userForm_mailAddress {
+	width:409px;
+}
+
+.u-update-partial-success-text {
+    color: rgb(67, 168, 48);
+    text-shadow: 1px 1px 1px rgb(255, 255, 255);
+    margin-top: 2px;
+}
+
+/** endof setting
+*****************************************/
+
+/**************************************** 
+  delete **/
+  
+#userSecessionForm_description {
+  width: 465px;
+}
+
+/** endof delete
+*****************************************/

@@ -1,0 +1,6 @@
+@charset "utf-8";
+
+#inquiryForm_mailAddress,
+#inquiryForm_description {
+  width:465px;
+}

@@ -1,0 +1,159 @@
+@charset "utf-8";
+
+.index-container section {
+  padding-bottom:16px;
+}
+
+.t-banner {
+  position:relative;
+  width:950px;
+  height:200px;
+}
+
+.t-btn-regist-user {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width:240px;
+        box-shadow:2px 2px 2px #666;
+    padding:14px 0px;
+}
+
+.t-btn-about-site {
+  position: absolute;
+  right: 270px;
+  bottom: 14px;
+    width:240px;
+    box-shadow:2px 2px 2px #666;
+    padding:14px 0px;
+}
+
+.t-pickups {
+  height:135px;
+  padding-top:16px;
+  overflow:hidden;
+  position:relative;
+  padding-bottom:16px;
+}
+
+.t-pickups ul {
+  width:10000px;
+}
+
+.t-pickups li {
+  width:174px;
+  height:130px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.t-pickups aside {
+  padding:0px 6px 6px;
+}
+
+.t-pickups-meta {
+  width:100%; 
+  position:absolute;
+  bottom:0px;
+  overflow:hidden;
+}
+
+.t-pickups-meta-wrap {
+  background:rgba(255,255,255,0.6);
+  position:relative;
+  bottom:-19px;
+  -webkit-transition: all .2s linear 0;
+  -moz-transition: all .2s linear;
+  -o-transition: all .2s linear 0;
+  -ms-transition: all .2s linear 0;
+}
+
+.t-pickups li:hover .t-pickups-meta-wrap {
+  background:rgba(255,255,255,1);
+  bottom:0px;
+  -webkit-transition: all .2s linear 0;
+  -moz-transition: all .2s linear;
+  -o-transition: all .2s linear 0;
+  -ms-transition: all .2s linear 0;
+}
+
+.t-pickups-t {
+  padding:6px;
+  font-size:16px;
+}
+
+.t-pickups-pager {
+  position:absolute;
+  bottom:0px;
+  width:100%;
+  text-align:center;
+}
+
+.t-pickups-pager > * {
+	margin:0px 4px;
+}
+.t-pickups-pager img {
+  opacity:0.7;
+  
+  -webkit-transition: all .1s linear 0;
+  -moz-transition: all .1s linear;
+  -o-transition: all .1s linear 0;
+  -ms-transition: all .1s linear 0;
+}
+
+.t-pickups-pager:hover img {
+  opacity:1;
+}
+
+.t-category {
+  float:left;
+  width:338px;
+  height:165px;
+  background-color:#fff;
+  margin:0px 8px 16px;
+  border: 1px solid rgb(226, 226, 226);
+  box-shadow: 1px 1px 1px #fff;
+}
+
+.t-category-h {
+  padding:10px;
+  border-bottom:1px dotted #ccc;
+  background-color:rgb(245, 245, 245);
+}
+
+.t-category-h h3 {
+  font-weight:bold;
+  font-size:21px;
+  letter-spacing:1px;
+  padding-left:78px;
+}
+
+.t-category-icon-wrap {
+  float:left;
+  padding:6px;
+  position:relative;
+  top:-42px;
+}
+
+.t-category-icon {
+  box-shadow:0px 1px 1px rgba(0,0,0,0.3), 0px 1px 0px rgba(255,255,255,0.3) inset, 0px -1px 0px rgba(255,255,255,0.2) inset;
+  border-radius:8px;
+}
+
+.t-category-total-num {
+  padding-top:4px;
+}
+
+.t-category-items {
+  float:left;
+  padding-top:9px;
+  padding-left:6px;
+} 
+.t-category-items li {
+  padding-bottom:9px;
+}
+
+.t-category-items .icon-caret-right:before {
+  font-size:11px; 
+  color:#666;
+}

@@ -1,0 +1,25 @@
+.emotion{
+  background: url(../images/sprite-emo.png?_=20130421-2) no-repeat top left;
+
+  display: -moz-inline-box;
+  display: inline-block;
+  /display: inline;
+  /zoom: 1;
+}
+
+.emotion-palet {
+}
+
+.emotion-palet li {
+  float:left;
+  padding:1px;
+}
+
+.sprite-emo-f-fine{ background-position: 0 0; width: 16px; height: 16px; } 
+.sprite-emo-f-sad{ background-position: -18px 0; width: 16px; height: 16px; } 
+.sprite-emo-f-smile{ background-position: -36px 0; width: 16px; height: 16px; } 
+.sprite-emo-f-surprize{ background-position: -54px 0; width: 16px; height: 16px; } 
+.sprite-emo-x-01{ background-position: -72px 0; width: 16px; height: 16px; } 
+.sprite-emo-x-02{ background-position: -90px 0; width: 16px; height: 16px; } 
+.sprite-emo-x-04{ background-position: -108px 0; width: 16px; height: 16px; } 
+.sprite-emo-x-05{ background-position: -126px 0; width: 16px; height: 16px; } 
